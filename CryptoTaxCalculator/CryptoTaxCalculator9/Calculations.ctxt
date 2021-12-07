@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Calculations
+comment1.params=amount\ buy\ sell
+comment1.target=float\ capitalGain(float,\ float,\ float)
+comment2.params=income
+comment2.target=float\ shortTaxMatrix(float)
+comment3.params=income
+comment3.target=float\ longTaxMatrix(float)
+numComments=4
