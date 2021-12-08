@@ -1,10 +1,9 @@
 #BlueJ class context
 comment0.target=Calculations
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Calculations\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=Calculations()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Calculations\r\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
-numComments=3
+comment1.params=amount\ buy\ sell
+comment1.target=float\ capitalGain(float,\ float,\ float)
+comment2.params=income
+comment2.target=float\ shortTaxMatrix(float)
+comment3.params=income
+comment3.target=float\ longTaxMatrix(float)
+numComments=4
