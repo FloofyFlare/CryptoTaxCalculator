@@ -8,19 +8,21 @@ public class PersonalInfo
     public static void main (String args [])
     {
            System.out.println("Welcome to the Crypto Tax: Capital Gain Calculator");
-           boolean longTerm = isLongTerm();
            float income = capitalGains();
-           taxBracket(isLongTerm(), capitalGains());
+            if (income < 0){
+               System.out.println("You do not need to pat tax on a loss");
+               System.exit(0);
+            }
+           taxBracket(isLongTerm(), income);
            System.out.println("Have you paid your taxes yet");
-           
-            boolean findingLength = true; 
-            String yORn = " ";
+           boolean findingLength = true; 
+           String yORn = " ";
            while (findingLength == true)
            {
                yORn = sc.nextLine();
                if(yORn.substring(0,1).equalsIgnoreCase("y")){
                    findingLength = false;
-                   
+                   System.out.println("good");
                }
                else if (yORn.substring(0,1).equalsIgnoreCase("n")){
                    System.out.println("The IRS will be there tomorrow");
@@ -30,24 +32,33 @@ public class PersonalInfo
                  System.out.println("input error{ try again }: ");  
                }
            }
+           
     }
     public static float capitalGains ()
     {
         //Issue one no error handle for non floats 
-        System.out.println("Please input the asset amount");
-        float assetAmount = sc.nextFloat();
-        System.out.println("Please input the price bought at (including network fee's)");
-        float priceInt = sc.nextFloat();
-        System.out.println("Please input the price sold at");
-        float pricePost = sc.nextFloat();
+        
+        System.out.print("Please input the asset amount:");
+        float assetAmount = 0;
+        System.out.println();
+        try{ assetAmount = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
+        System.out.print("Please input the price bought at (including network fee's):");
+        float priceInt = 0;
+        System.out.println();
+        try{ priceInt = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
+        System.out.print("Please input the price sold at:");
+        float pricePost = 0;
+        System.out.println();
+        try{ pricePost = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
         float gain = calc.capitalGain(assetAmount, priceInt, pricePost);
         System.out.println("capital gain $" + gain);
         return gain;
-    } 
+        }
     public static boolean isLongTerm () {
         boolean findingLength = true; 
         boolean Lterm = false;
         System.out.println("Was the asset held longer than 1 year (y/n):");
+        sc.nextLine();
             String yORn = " ";
         while (findingLength == true)
            {
@@ -68,7 +79,7 @@ public class PersonalInfo
     }
     public static void taxBracket (boolean isLong, float cashEarned){
         if (isLong){
-            System.out.println("Your tax owed " + (cashEarned * (calc.longTaxMatrix(cashEarned))));
+        System.out.println("Your tax owed " + (cashEarned * (calc.longTaxMatrix(cashEarned))));
         }
         else{
         System.out.println("Your tax owed " + (cashEarned * (calc.shortTaxMatrix(cashEarned))));
