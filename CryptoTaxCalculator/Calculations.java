@@ -7,13 +7,13 @@ public class Calculations
 {
     // instance variables - replace the example below with your own
     public static float capitalGain(float amount, float buy, float sell){
-        float awnser = (sell * amount) - (buy*amount);
-        return awnser;
+       float awnser = (sell * amount) - (buy*amount);
+       return awnser;
     }
     
     public static float shortTaxMatrix (float income) {
         double[][] array = new double[4][7];
-        System.out.println(" How are you filing your taxes: individuals(0) married filing Joint(1) For Heads Of Households(2) INTEGERS ONLY");
+        System.out.println("How are you filing your taxes: individuals(0) married filing Joint(1) For Heads Of Households(2) (INTEGERS ONLY):");
         Scanner sc = new Scanner(System.in);    
           boolean findingLength = true;
           String filing = " ";
@@ -43,11 +43,11 @@ public class Calculations
                }
            }
            
-        System.out.println("What is your yearly income (NUMBERS ONLY)");
-        float yearlyIncome = sc.nextFloat();
-        
+        System.out.println("What is your Annual income (NUMBERS ONLY):");
+        float yearlyIncome = 0;
+        try{ yearlyIncome = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
         //rate
-        array[0][0] = 0.10; 
+        array[0][0] = 0.10;
         array[0][1] = 0.12;
         array[0][2] = 0.22;
         array[0][3] = 0.24;
@@ -90,7 +90,7 @@ public class Calculations
 
     public static float longTaxMatrix (float income) {
         double[][] array = new double[4][7];
-        System.out.println(" How are you filing your taxes: individuals(0) married filing Joint(1) For Heads Of Households(2) INTEGERS ONLY");
+        System.out.println("How are you filing your taxes: individuals(0) married filing Joint(1) For Heads Of Households(2) INTEGERS ONLY");
         Scanner sc = new Scanner(System.in);    
           boolean findingLength = true;
           String filing = " ";
@@ -121,7 +121,8 @@ public class Calculations
            }
            
         System.out.println("What is your yearly income (NUMBERS ONLY)");
-        float yearlyIncome = sc.nextFloat();
+        float yearlyIncome = 0;
+        try{ yearlyIncome = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
         
         //rate
         array[0][0] = 0; 
@@ -132,11 +133,11 @@ public class Calculations
         array[1][1] = 40000;
         array[1][2] = 441450;
         
-        array[2][0] = 0; 
+        array[2][0] = 0;
         array[2][1] = 80000;
         array[2][2] = 496600;
         
-        array[3][0] = 0; 
+        array[3][0] = 0;
         array[3][1] = 53600;
         array[3][2] = 469050;
         
@@ -144,6 +145,7 @@ public class Calculations
         while(array[x][i] >= yearlyIncome){   
             i--;
         }
+        
         return ((float)array[0][i]);
     }
 }

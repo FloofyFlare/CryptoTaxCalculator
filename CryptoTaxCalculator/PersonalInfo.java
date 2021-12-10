@@ -1,4 +1,7 @@
 import java.util.Scanner;
+//https://www.geeksforgeeks.org/how-to-set-precision-for-double-values-in-java/
+import java.io.*;
+import java.lang.*;
 
 public class PersonalInfo
 {
@@ -7,6 +10,7 @@ public class PersonalInfo
     
     public static void main (String args [])
     {
+        
            System.out.println("Welcome to the Crypto Tax: Capital Gain Calculator");
            float income = capitalGains();
             if (income < 0){
@@ -15,7 +19,6 @@ public class PersonalInfo
             }
            taxBracket(isLongTerm(), income);
            System.out.println("Have you paid your taxes yet");
-           
            boolean findingLength = true; 
            String yORn = " ";
            while (findingLength == true)
@@ -37,8 +40,7 @@ public class PersonalInfo
     }
     public static float capitalGains ()
     {
-        //Issue one no error handle for non floats 
-        
+        //Issue one no error handle for non floats  
         System.out.print("Please input the asset amount:");
         float assetAmount = 0;
         System.out.println();
@@ -52,7 +54,9 @@ public class PersonalInfo
         System.out.println();
         try{ pricePost = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
         float gain = calc.capitalGain(assetAmount, priceInt, pricePost);
-        System.out.println("capital gain $" + gain);
+        //makes the float display in money decimals
+        //https://www.geeksforgeeks.org/how-to-set-precision-for-double-values-in-java/
+        System.out.println("capital gain $" + (String.format("%.2f", gain)));
         return gain;
         }
     public static boolean isLongTerm () {
