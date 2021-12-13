@@ -10,9 +10,10 @@ public class Calculations
        float awnser = (sell * amount) - (buy*amount);
        return awnser;
     }
-    
+    // both short and long tax matrix work the same 
     public static float shortTaxMatrix (float income) {
         double[][] array = new double[4][7];
+        // asks the user how they file their taxes
         System.out.println("How are you filing your taxes: individuals(0) married filing Joint(1) For Heads Of Households(2) (INTEGERS ONLY):");
         Scanner sc = new Scanner(System.in);    
           boolean findingLength = true;
@@ -46,6 +47,13 @@ public class Calculations
         System.out.println("What is your Annual income (NUMBERS ONLY):");
         float yearlyIncome = 0;
         try{ yearlyIncome = sc.nextFloat();} catch(Exception e){System.out.println("error: Not a number");}
+        /*based on the yearly income that the computer gets from the players input it compares that to a 2D matrix and then spits out the taxed percentage of their cryptocurrency income
+         * 
+         * example: if the user said they filed taxes individually there yearly income would be compared to the corresponding tax bracket array[1][x] by a while statment until it
+         * finds a point in which the yearly income of the player is more then the current index (x) but less then the previous x. 
+         * 
+         * This x variable in array[1][x] would be kept then used in array[0][x] to find the correct percentage that the user must pay in taxes of their income.
+         */
         //rate
         array[0][0] = 0.10;
         array[0][1] = 0.12;
@@ -80,7 +88,7 @@ public class Calculations
         array[3][6] = 523601;
         
         int i = 6;
-     
+        // traverses through the array using the yearlyIncome variable given by the user 
         while(array[x][i] >= yearlyIncome){   
             i--;
         }
